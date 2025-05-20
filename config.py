@@ -1,10 +1,10 @@
 import torch
 from torchvision import datasets, transforms, models
-
+import os
 class parentConfig:
-    validation_dir = "/kaggle/input/deepfake-and-real-images/Dataset/Train/"
+    validation_dir = "data/deepfake-and-real-images/Dataset/Validation/"
     validation_subset_percentage = None
-    train_dir = "/kaggle/input/deepfake-and-real-images/Dataset/Train/"
+    train_dir = "data/deepfake-and-real-images/Dataset/Train/"
     train_subset_percentage = None
     batch_size = 64
     num_epochs = 100
@@ -20,4 +20,8 @@ class parentConfig:
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
-    
+    def __init__(self):
+        # Create directories if they don't exist
+        os.makedirs(self.plots_dir, exist_ok=True)
+        os.makedirs(self.logs_dir, exist_ok=True)
+        os.makedirs(self.model_dir, exist_ok=True)
