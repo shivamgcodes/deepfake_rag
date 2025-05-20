@@ -92,7 +92,7 @@ for epoch in range(num_epochs):
     validation_loss_running = validation_loss_running / len(validation_dataloader)
     torch.save(model, config.model_dir+'epoch' + str(epoch) + 'deepfake_detection.pt')
 
-    logger.info(f'Epoch [{epoch+1}/{num_epochs}],Training Loss: {train_loss_running:.4f}, Validation Loss: {validation_loss_running:.4f}')
+    logger.info(f'Epoch [{epoch+1}/{num_epochs}],Training Loss: {train_loss_running:.6f}, Validation Loss: {validation_loss_running:.6f}')
 
     train_loss.append(train_loss_running)
     validation_loss.append(validation_loss_running)

@@ -7,7 +7,7 @@ class parentConfig:
     train_dir = "data/deepfake-and-real-images/Dataset/Train/"
     train_subset_percentage = None
     batch_size = 64
-    num_epochs = 100
+    num_epochs = 30
     learning_rate = 0.001
     num_workers = 4
     device ='cuda:0' if torch.cuda.is_available() else 'cpu'
