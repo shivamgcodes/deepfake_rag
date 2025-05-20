@@ -2,6 +2,7 @@ import cv2
 from PIL import Image
 from torch.utils.data import Dataset
 import os
+from tqdm import tqdm
 
 class CustomImageDataset(Dataset):
     def __init__(self, img_dir, transform=None, target_transform=None):
@@ -14,13 +15,13 @@ class CustomImageDataset(Dataset):
         # loading the entire dataset into the memory
         # this is not recommended for large datasets
         # but for this dataset it is ok
-        for image_file in os.listdir(real):
+        for image_file in tqdm(os.listdir(real)):
             path = os.path.join(real, image_file)
             img = Image.open(path).convert("RGB")
             self.images.append(img)
             self.labels.append(1)
 
-        for image_file in os.listdir(fake):
+        for image_file in tqdm(os.listdir(fake)):
             path = os.path.join(fake, image_file)
             img = Image.open(path).convert("RGB")
             self.images.append(img)
